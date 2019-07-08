@@ -1,6 +1,6 @@
 #  Portfolio
 
-This is my portofolio site build with simple **HTML** **CSS** and **Javascript**.
+This is my portofolio site build with simple **HTML**, **CSS** and **Javascript**.
 
 ### Todos
 1. Adding projects from git
