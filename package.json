@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --style=compressed src/scss/main.scss src/_includes/css/main.css",
+    "sass": "sass src/scss/main.scss src/css/main.css",
     "sass:build": "sass --style=compressed src/scss/main.scss dist/css/main.css",
     "watch:dev": "eleventy --serve",
     "watch:scss": "npm run sass -- --watch",
