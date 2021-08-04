@@ -1,5 +1,7 @@
 module.exports = function (eleventyConfig) {
-  eleventyConfig.setTemplateFormats(['css', 'njk']);
+  eleventyConfig.addWatchTarget("./src/sass/");
+  eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
+
   return {
     dir: {
       input: 'src',

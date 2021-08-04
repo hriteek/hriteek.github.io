@@ -2,5 +2,8 @@
 layout: layouts/base.njk
 ---
 
+{% include 'layouts/_header.njk' %}
+
 {{ content | safe }}
-<footer>&copy; Copyright reserved 2021</footer>
+
+{% include 'layouts/_footer.njk' %}

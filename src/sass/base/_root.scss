@@ -7,6 +7,11 @@
     }
   }
 
+  @each $shade, $value in $color {
+    // --clr-'"" + #{$shade}': $value;
+    --clr-test: #{$shade};
+  }
+
   @each $font-weight, $value in $font-weights {
     --fw-#{$font-weight}: #{$value};
   }
