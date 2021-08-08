@@ -1,0 +1,56 @@
+@use '../abstracts' as abs;
+
+@each $color, $shades in abs.$colors {
+  @each $shade, $value in $shades {
+    .text-#{$color}-#{$shade} {
+      color: var(--clr-#{$color}-#{$shade});
+    }
+  }
+}
+
+@each $shade, $value in abs.$color {
+  .text-#{$shade} {
+    color: var(--clr-#{$shade});
+  }
+}
+
+@each $color, $shades in abs.$colors {
+  @each $shade, $value in $shades {
+    .bg-#{$color}-#{$shade} {
+      background-color: var(--clr-#{$color}-#{$shade});
+    }
+  }
+}
+
+@each $shade, $value in abs.$color {
+  .bg-#{$shade} {
+    background-color: var(--clr-#{$shade});
+  }
+}
+
+@each $screen-size, $font-size in abs.$type-scale {
+  @if $screen-size == small {
+    @each $size, $value in $font-size {
+      .text-#{$size} {
+        font-size: var(--fs-#{$size});
+      }
+    }
+  } @else {
+    @include abs.mq(small) {
+      @each $size, $value in $font-size {
+        .text-#{$size} {
+          font-size: var(--fs-#{$size});
+        }
+      }
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  width: min(45em, 75%); //720px
+}
+
+.container--flex{
+  display: flex;
+}
