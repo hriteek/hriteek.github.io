@@ -9,9 +9,9 @@
 }
 
 @each $shade, $value in abs.$color {
-  // .text-#{$shade} {
-  //   color: var(--clr-#{$shade});
-  // }
+  .text-#{$shade} {
+    color: var(--clr-#{$shade});
+  }
 }
 
 @each $color, $shades in abs.$colors {
@@ -23,9 +23,9 @@
 }
 
 @each $shade, $value in abs.$color {
-  // .bg-#{$shade} {
-  //   background-color: var(--clr-#{$shade});
-  // }
+  .bg-#{$shade} {
+    background-color: var(--clr-#{$shade});
+  }
 }
 
 @each $screen-size, $font-size in abs.$type-scale {
@@ -44,4 +44,13 @@
       }
     }
   }
+}
+
+.container {
+  margin: auto;
+  width: min(45em, 75%); //720px
+}
+
+.container--flex{
+  display: flex;
 }

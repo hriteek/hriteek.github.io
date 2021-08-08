@@ -8,8 +8,7 @@
   }
 
   @each $shade, $value in $color {
-    // --clr-'"" + #{$shade}': $value;
-    --clr-test: #{$shade};
+    --clr-#{$shade} : #{$value};
   }
 
   @each $font-weight, $value in $font-weights {

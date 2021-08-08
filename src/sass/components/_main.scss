@@ -1,0 +1,85 @@
+@use '../abstracts' as abs;
+
+main {
+  padding-block: 2em;
+}
+
+.main__container {
+  width: min(75ch, 70%);
+  margin: auto;
+  text-align: center;
+}
+
+.img__container {
+  display: none;
+}
+
+main .container--flex {
+  justify-content: space-between;
+}
+
+.section__link {
+  background: var(--clr-primary-700);
+}
+
+.section__link .container {
+  color: var(--clr-white);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+  margin: auto;
+  padding-block: 2em;
+}
+
+.section__link .container > * {
+  flex: 1 1 20%;
+}
+
+.section__skills {
+  margin-top: 1em;
+  color: var(--clr-secondary-400);
+  text-align: center;
+}
+
+.section__skills h2 {
+  border-bottom: 2px solid var(--clr-secondary-200);
+  display: inline-block;
+}
+
+.section__skills .container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em auto;
+  gap: 3em;
+}
+
+.section__skills .container > * {
+  flex: 1 1 20%;
+}
+
+.section__item {
+  text-align: center;
+}
+
+.icon__container {
+  margin: 0 auto;
+  width: 40px;
+  text-align: center;
+}
+
+.icon__container img {
+  width: 40px;
+}
+
+@include abs.mq(small) {
+  .main__container {
+    text-align: left;
+    margin: unset;
+    width: min(40ch, 50%);
+  }
+
+  .img__container {
+    display: block;
+    width: 250px;
+  }
+}

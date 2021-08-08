@@ -109,18 +109,22 @@ select {
   --clr-grays-700: #484f56;
   --clr-grays-800: #353b41;
   --clr-grays-900: #22262a;
-  --clr-test: blue;
-  --clr-test: indigo;
-  --clr-test: purple;
-  --clr-test: pink;
-  --clr-test: red;
-  --clr-test: orange;
-  --clr-test: yellow;
-  --clr-test: green;
-  --clr-test: teal;
-  --clr-test: cyan;
-  --clr-test: white;
-  --clr-test: black;
+  --clr-accent: #afb4b6;
+  --clr-black: #000;
+  --clr-blue: #0d6efd;
+  --clr-cyan: #0dcaf0;
+  --clr-gray: #ced4da;
+  --clr-green: #198754;
+  --clr-indigo: #6610f2;
+  --clr-orange: #fd7e14;
+  --clr-pink: #d63384;
+  --clr-primary: #935c5c;
+  --clr-purple: #6f42c1;
+  --clr-red: #dc3545;
+  --clr-secondary: #673e32;
+  --clr-teal: #20c997;
+  --clr-white: #fff;
+  --clr-yellow: #ffc107;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
@@ -286,6 +290,70 @@ select {
   color: var(--clr-grays-900);
 }
 
+.text-accent {
+  color: var(--clr-accent);
+}
+
+.text-black {
+  color: var(--clr-black);
+}
+
+.text-blue {
+  color: var(--clr-blue);
+}
+
+.text-cyan {
+  color: var(--clr-cyan);
+}
+
+.text-gray {
+  color: var(--clr-gray);
+}
+
+.text-green {
+  color: var(--clr-green);
+}
+
+.text-indigo {
+  color: var(--clr-indigo);
+}
+
+.text-orange {
+  color: var(--clr-orange);
+}
+
+.text-pink {
+  color: var(--clr-pink);
+}
+
+.text-primary {
+  color: var(--clr-primary);
+}
+
+.text-purple {
+  color: var(--clr-purple);
+}
+
+.text-red {
+  color: var(--clr-red);
+}
+
+.text-secondary {
+  color: var(--clr-secondary);
+}
+
+.text-teal {
+  color: var(--clr-teal);
+}
+
+.text-white {
+  color: var(--clr-white);
+}
+
+.text-yellow {
+  color: var(--clr-yellow);
+}
+
 .bg-primary-100 {
   background-color: var(--clr-primary-100);
 }
@@ -430,6 +498,70 @@ select {
   background-color: var(--clr-grays-900);
 }
 
+.bg-accent {
+  background-color: var(--clr-accent);
+}
+
+.bg-black {
+  background-color: var(--clr-black);
+}
+
+.bg-blue {
+  background-color: var(--clr-blue);
+}
+
+.bg-cyan {
+  background-color: var(--clr-cyan);
+}
+
+.bg-gray {
+  background-color: var(--clr-gray);
+}
+
+.bg-green {
+  background-color: var(--clr-green);
+}
+
+.bg-indigo {
+  background-color: var(--clr-indigo);
+}
+
+.bg-orange {
+  background-color: var(--clr-orange);
+}
+
+.bg-pink {
+  background-color: var(--clr-pink);
+}
+
+.bg-primary {
+  background-color: var(--clr-primary);
+}
+
+.bg-purple {
+  background-color: var(--clr-purple);
+}
+
+.bg-red {
+  background-color: var(--clr-red);
+}
+
+.bg-secondary {
+  background-color: var(--clr-secondary);
+}
+
+.bg-teal {
+  background-color: var(--clr-teal);
+}
+
+.bg-white {
+  background-color: var(--clr-white);
+}
+
+.bg-yellow {
+  background-color: var(--clr-yellow);
+}
+
 .text-300 {
   font-size: var(--fs-300);
 }
@@ -479,16 +611,109 @@ select {
     font-size: var(--fs-800);
   }
 }
+.container {
+  margin: auto;
+  width: min(45em, 75%);
+}
+
+.container--flex {
+  display: flex;
+}
+
 .header {
-  padding: 1em 2em;
+  padding-block: 2em;
+}
+
+footer {
+  background: var(--clr-primary-700);
+  color: var(--clr-secondary-100);
+  text-align: right;
+  font-size: var(--fs-400);
+  padding-block: 2em;
 }
 
 main {
-  color: red;
+  padding-block: 2em;
 }
 
-section {
-  background-color: green;
+.main__container {
+  width: min(75ch, 70%);
+  margin: auto;
+  text-align: center;
+}
+
+.img__container {
+  display: none;
+}
+
+main .container--flex {
+  justify-content: space-between;
+}
+
+.section__link {
+  background: var(--clr-primary-700);
+}
+
+.section__link .container {
+  color: var(--clr-white);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+  margin: auto;
+  padding-block: 2em;
+}
+
+.section__link .container > * {
+  flex: 1 1 20%;
+}
+
+.section__skills {
+  margin-top: 1em;
+  color: var(--clr-secondary-400);
+  text-align: center;
+}
+
+.section__skills h2 {
+  border-bottom: 2px solid var(--clr-secondary-200);
+  display: inline-block;
+}
+
+.section__skills .container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em auto;
+  gap: 3em;
+}
+
+.section__skills .container > * {
+  flex: 1 1 20%;
+}
+
+.section__item {
+  text-align: center;
+}
+
+.icon__container {
+  margin: 0 auto;
+  width: 40px;
+  text-align: center;
+}
+
+.icon__container img {
+  width: 40px;
+}
+
+@media only screen and (min-width: 40em) {
+  .main__container {
+    text-align: left;
+    margin: unset;
+    width: min(40ch, 50%);
+  }
+
+  .img__container {
+    display: block;
+    width: 250px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
