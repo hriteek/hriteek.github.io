@@ -1,5 +1,4 @@
-# Page header
-
+Simple eleventy site with github action for build workflow
 
 
 ## Generate keys for github action
