@@ -1,0 +1,22 @@
+[
+  {
+    "name": "HTML",
+    "image": "/html-5.svg"
+  },
+  {
+    "name": "CSS",
+    "image": "/css3.svg"
+  },
+  {
+    "name": "JavaScript",
+    "image": "/javascript.svg"
+  },
+  {
+    "name": "Node JS",
+    "image": "/nodejs.svg"
+  },
+  {
+    "name": "React JS",
+    "image": "/react.svg"
+  }
+]
