@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hriteek Bista - JavaScript Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            },
+            maxWidth: {
+              'resume': '800px',
+            },
+            colors: {
+              night: {
+                950: '#020617',
+                900: '#040b1f',
+                800: '#071229',
+                700: '#10203b',
+                600: '#182b49',
+                500: '#223559',
+              },
+              aurora: {
+                500: '#64ffda',
+                400: '#72f5d5',
+                300: '#8dfce3',
+              },
+              mist: {
+                100: '#f0f6ff',
+                200: '#c7d6f1',
+                300: '#9fb1d4',
+              }
+            },
+            backgroundImage: {
+              'night-sky': 'radial-gradient(circle at 20% 20%, rgba(100, 255, 218, 0.12), transparent 55%), radial-gradient(circle at 80% 10%, rgba(96, 125, 255, 0.12), transparent 45%), linear-gradient(160deg, #040b1f 0%, #071229 50%, #040b1f 100%)'
+            },
+            boxShadow: {
+              glow: '0 25px 60px -15px rgba(100, 255, 218, 0.35)',
+              panel: '0 35px 80px -40px rgba(4, 17, 35, 0.85)',
+              card: '0 25px 60px -45px rgba(4, 17, 35, 0.75)'
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Print styles - Single page optimization */
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        
+        * {
+          -webkit-print-color-adjust: exact !important;
+          color-adjust: exact !important;
+          box-shadow: none !important;
+        }
+        
+        @page {
+          margin: 0.4in;
+        }
+
+        body {
+          font-size: 9.3pt !important;
+          line-height: 1.1 !important;
+          color: #000 !important;
+          background: #fff !important;
+          margin: 0 !important;
+          padding: 0.25in 0.3in !important;
+          background-image: none !important;
+        }
+        
+        /* Compact header */
+        header {
+          margin-bottom: 0.12in !important;
+          padding: 0 !important;
+          background: transparent !important;
+          border: none !important;
+        }
+
+        h1 {
+          font-size: 16pt !important;
+          margin: 0 0 0.035in 0 !important;
+        }
+
+        h2 {
+          font-size: 10.5pt !important;
+          margin: 0.07in 0 0.035in 0 !important;
+          padding-bottom: 0.015in !important;
+          border-bottom: 1pt solid #000 !important;
+        }
+
+        h3 {
+          font-size: 9.5pt !important;
+          margin: 0.03in 0 0.012in 0 !important;
+        }
+
+        .print-header-wrap {
+          display: flex !important;
+          flex-direction: row !important;
+          align-items: flex-start !important;
+          justify-content: space-between !important;
+          gap: 0.2in !important;
+        }
+
+        .print-contact {
+          display: block !important;
+          text-align: right !important;
+          font-size: 8.2pt !important;
+          line-height: 1.25 !important;
+        }
+
+        .print-contact p {
+          margin: 0.015in 0 !important;
+        }
+
+        .print-contact strong {
+          font-weight: 600 !important;
+        }
+
+        /* Compact sections */
+        section {
+          margin-bottom: 0.08in !important;
+          padding: 0 !important;
+          border: none !important;
+          background: transparent !important;
+          border-radius: 0 !important;
+        }
+
+        .project-card {
+          margin-bottom: 0.06in !important;
+          padding: 0 !important;
+          border: none !important;
+          background: transparent !important;
+        }
+
+        /* Compact lists */
+        ul {
+          margin: 0.035in 0 !important;
+          padding-left: 0.15in !important;
+        }
+
+        li {
+          margin-bottom: 0.015in !important;
+          font-size: 8.5pt !important;
+        }
+
+        /* Compact paragraphs */
+        p {
+          margin: 0.02in 0 !important;
+          font-size: 8.3pt !important;
+        }
+        
+        /* Compact skills tags */
+        .flex {
+          gap: 0.05in !important;
+        }
+
+        span {
+          font-size: 7.2pt !important;
+          padding: 0.008in 0.02in !important;
+          margin: 0.006in !important;
+        }
+
+        .mb-6 { margin-bottom: 0.08in !important; }
+        .mb-4 { margin-bottom: 0.06in !important; }
+        .mb-3 { margin-bottom: 0.045in !important; }
+        .mb-2 { margin-bottom: 0.03in !important; }
+        .mb-1 { margin-bottom: 0.02in !important; }
+
+        main {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        .space-y-10 > :not([hidden]) ~ :not([hidden]) {
+          margin-top: 0.09in !important;
+        }
+
+        #contactSection {
+          display: none !important;
+        }
+
+        .badge {
+          border: none !important;
+          background: transparent !important;
+          color: #000 !important;
+          padding: 0 !important;
+          margin: 0 0.08in 0.04in 0 !important;
+          font-weight: 500 !important;
+        }
+
+        .marker\:text-aurora-500::marker {
+          color: #000 !important;
+        }
+
+        .text-mist-100,
+        .text-mist-200,
+        .text-mist-300,
+        .text-aurora-500,
+        .text-aurora-400,
+        .text-aurora-300,
+        .text-night-900,
+        .text-mist-200 a,
+        .text-mist-300 a,
+        .text-mist-100 a {
+          color: #000 !important;
+        }
+
+        /* Page break control */
+        .print-break {
+          page-break-before: always;
+        }
+        
+        .print-avoid-break {
+          page-break-inside: avoid;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+          color: #000 !important;
+          page-break-after: avoid;
+        }
+        
+        h2 {
+          border-bottom: 1pt solid #000 !important;
+        }
+
+        a {
+          color: #000 !important;
+          text-decoration: none;
+        }
+
+        /* Remove footer */
+        footer {
+          display: none !important;
+        }
+        
+        /* Compact grid layouts */
+        .grid {
+          display: block !important;
+        }
+
+        .grid > div {
+          margin-bottom: 0.04in !important;
+        }
+
+        .print-projects-grid {
+          display: grid !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 0.06in 0.18in !important;
+        }
+
+        .print-projects-grid .project-card {
+          margin: 0 !important;
+        }
+
+        .print-skills-grid {
+          display: grid !important;
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          gap: 0.05in 0.15in !important;
+        }
+
+        .print-skills-grid .skills-column {
+          margin-bottom: 0 !important;
+        }
+
+        .print-skills-grid .skills-column h3 {
+          margin-top: 0 !important;
+        }
+
+        .print-skills-grid .skills-column .flex {
+          display: flex !important;
+          flex-wrap: wrap !important;
+          gap: 0.04in 0.12in !important;
+        }
+      }
+
+      /* Light theme overrides */
+      body.light-mode {
+        background: linear-gradient(180deg, #f6f9ff 0%, #eef2ff 100%) !important;
+        color: #1f2742 !important;
+      }
+
+      body.light-mode header,
+      body.light-mode footer {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-color: rgba(209, 217, 238, 0.85) !important;
+        color: inherit !important;
+      }
+
+      body.light-mode section {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-color: rgba(209, 217, 238, 0.85) !important;
+        box-shadow: 0 25px 60px -45px rgba(36, 64, 120, 0.18) !important;
+      }
+
+      body.light-mode main {
+        background: transparent !important;
+      }
+
+      body.light-mode h1,
+      body.light-mode h2,
+      body.light-mode h3,
+      body.light-mode strong {
+        color: #1f2742 !important;
+      }
+
+      body.light-mode p,
+      body.light-mode li,
+      body.light-mode span,
+      body.light-mode a {
+        color: #405077 !important;
+      }
+
+      body.light-mode a {
+        color: #2563eb !important;
+        text-decoration-color: rgba(37, 99, 235, 0.2);
+      }
+
+      body.light-mode .badge {
+        border-color: rgba(36, 64, 120, 0.15) !important;
+        background: rgba(36, 64, 120, 0.08) !important;
+        color: #1f2742 !important;
+      }
+
+      body.light-mode .project-card {
+        background: rgba(255, 255, 255, 0.92) !important;
+        border-color: rgba(209, 217, 238, 0.85) !important;
+        box-shadow: 0 20px 55px -40px rgba(36, 64, 120, 0.28) !important;
+      }
+
+      body.light-mode .project-card h3,
+      body.light-mode .project-card p,
+      body.light-mode .project-card span {
+        color: #405077 !important;
+      }
+
+      body.light-mode .marker\:text-aurora-500::marker {
+        color: #22c55e !important;
+      }
+
+      body.light-mode .bg-night-900\/70,
+      body.light-mode .bg-night-900\/60,
+      body.light-mode .bg-night-800\/70 {
+        background: rgba(255, 255, 255, 0.92) !important;
+      }
+
+      body.light-mode .border-night-800\/70,
+      body.light-mode .border-night-800\/60,
+      body.light-mode .border-night-700\/70 {
+        border-color: rgba(209, 217, 238, 0.85) !important;
+      }
+
+      @keyframes themeIconPop {
+        0% { transform: scale(0.85) rotate(-10deg); opacity: 0.4; }
+        60% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0); opacity: 1; }
+      }
+
+      .theme-icon-animate {
+        animation: themeIconPop 0.35s ease forwards;
+      }
+
+      #themeToggle {
+        transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 0 18px 45px -32px rgba(4, 17, 35, 0.85);
+      }
+
+      html.dark #themeToggle {
+        background: rgba(4, 11, 31, 0.85) !important;
+        border-color: rgba(34, 53, 89, 0.7) !important;
+        color: #c7d6f1 !important;
+      }
+
+      html.dark #themeToggle:hover {
+        border-color: rgba(100, 255, 218, 0.75) !important;
+        color: #64ffda !important;
+      }
+
+      body.light-mode #themeToggle {
+        background: rgba(255, 255, 255, 0.96) !important;
+        border-color: rgba(34, 53, 89, 0.28) !important;
+        color: #223559 !important;
+        box-shadow: 0 15px 35px -28px rgba(36, 64, 120, 0.45) !important;
+      }
+
+      body.light-mode #themeToggle svg {
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+
+      body.light-mode #themeToggle:hover {
+        border-color: rgba(37, 99, 235, 0.45) !important;
+        color: #2563eb !important;
+      }
+
+      body.light-mode #themeToggle:hover svg {
+        transform: scale(1.08);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-night-950 bg-night-sky text-mist-100 font-sans antialiased transition-colors duration-300">
+    <!-- Header -->
+    <header class="bg-night-900/70 border-b border-night-800/60 py-6 print:border-0 backdrop-blur-sm transition-colors duration-300">
+        <div class="max-w-resume mx-auto px-4">
+            <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between print-header-wrap">
+                <div>
+                    <h1 class="text-3xl font-bold text-mist-100 tracking-tight">Hriteek Bista</h1>
+                    <p class="text-xl text-mist-300 mt-1">JavaScript Developer</p>
+                </div>
+                <div class="print-contact hidden">
+                    <p><strong>Email:</strong> hriteekbista@gmail.com</p>
+                    <p><strong>Phone:</strong> +977 9862074699</p>
+                    <p><strong>Location:</strong> Kathmandu, Nepal</p>
+                    <p><strong>Website:</strong> https://hriteekbista.com.np</p>
+                    <p><strong>LinkedIn:</strong> linkedin.com/in/hriteek-bista</p>
+                </div>
+                <div class="flex gap-3 self-start md:self-auto no-print">
+                    <button id="themeToggle" aria-label="Toggle theme" class="no-print inline-flex items-center justify-center rounded-lg border border-night-700 bg-night-800/70 px-3 py-2 text-mist-200 hover:border-aurora-500 hover:text-aurora-500 transition-colors">
+                        <svg id="sunIcon" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="3.5" />
+                            <line x1="12" y1="2.5" x2="12" y2="5" />
+                            <line x1="12" y1="19" x2="12" y2="21.5" />
+                            <line x1="4.22" y1="4.22" x2="5.94" y2="5.94" />
+                            <line x1="18.06" y1="18.06" x2="19.78" y2="19.78" />
+                            <line x1="2.5" y1="12" x2="5" y2="12" />
+                            <line x1="19" y1="12" x2="21.5" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.94" y2="18.06" />
+                            <line x1="18.06" y1="5.94" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg id="moonIcon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                        </svg>
+                    </button>
+                    <button id="printBtn" class="no-print inline-flex items-center justify-center rounded-lg border border-aurora-500 bg-aurora-500 px-4 py-2 font-semibold text-night-900 shadow-glow transition duration-200 hover:bg-aurora-400">
+                        Download PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-resume mx-auto px-4 py-12 space-y-10">
+        <!-- About Section -->
+        <section class="print-avoid-break rounded-2xl border border-night-800/70 bg-night-900/60 p-6 shadow-panel backdrop-blur-sm">
+            <h2 class="text-2xl font-semibold text-mist-100 mb-4 border-b border-night-700/70 pb-2">About</h2>
+            <p class="text-mist-200 leading-relaxed">
+                Passionate JavaScript developer with expertise in modern web technologies. 
+                I specialize in building responsive web applications using React, Node.js, and various JavaScript frameworks. 
+                Committed to writing clean, maintainable code and staying up-to-date with the latest industry trends.
+            </p>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="print-avoid-break rounded-2xl border border-night-800/70 bg-night-900/60 p-6 shadow-panel backdrop-blur-sm">
+            <h2 class="text-2xl font-semibold text-mist-100 mb-4 border-b border-night-700/70 pb-2">Experience</h2>
+            
+            <div class="mb-6">
+                <div class="flex flex-col gap-1 md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-mist-100">Senior JavaScript Developer</h3>
+                    <span class="text-mist-300 text-sm">2022 - Present</span>
+                </div>
+                <p class="text-mist-300 mb-2">Tech Company Inc.</p>
+                <ul class="text-mist-200 list-disc list-inside space-y-1 marker:text-aurora-500">
+                    <li>Developed and maintained React-based web applications serving 10,000+ users</li>
+                    <li>Implemented RESTful APIs using Node.js and Express</li>
+                    <li>Optimized application performance, reducing load times by 40%</li>
+                    <li>Collaborated with cross-functional teams using Agile methodologies</li>
+                </ul>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex flex-col gap-1 md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-mist-100">Frontend Developer</h3>
+                    <span class="text-mist-300 text-sm">2020 - 2022</span>
+                </div>
+                <p class="text-mist-300 mb-2">Digital Solutions Ltd.</p>
+                <ul class="text-mist-200 list-disc list-inside space-y-1 marker:text-aurora-500">
+                    <li>Built responsive user interfaces using HTML5, CSS3, and JavaScript</li>
+                    <li>Integrated third-party APIs and services</li>
+                    <li>Participated in code reviews and mentored junior developers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="print-avoid-break rounded-2xl border border-night-800/70 bg-night-900/60 p-6 shadow-panel backdrop-blur-sm">
+            <h2 class="text-2xl font-semibold text-mist-100 mb-4 border-b border-night-700/70 pb-2">Projects</h2>
+            
+            <div class="print-projects-grid grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div class="project-card rounded-2xl border border-night-800/60 bg-night-900/70 p-5 shadow-card">
+                    <h3 class="text-lg font-semibold text-mist-100 mb-2">E-Commerce Dashboard</h3>
+                    <p class="text-mist-300 mb-2">React, Node.js, MongoDB, Tailwind CSS</p>
+                    <p class="text-mist-200 mb-3">
+                        A comprehensive dashboard for managing e-commerce operations with real-time analytics, 
+                        inventory management, and order processing capabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge rounded-full border border-aurora-500/40 bg-aurora-500/10 px-3 py-1 text-sm text-aurora-500">React</span>
+                        <span class="badge rounded-full border border-aurora-500/40 bg-aurora-500/10 px-3 py-1 text-sm text-aurora-500">Node.js</span>
+                        <span class="badge rounded-full border border-aurora-500/40 bg-aurora-500/10 px-3 py-1 text-sm text-aurora-500">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="project-card rounded-2xl border border-night-800/60 bg-night-900/70 p-5 shadow-card">
+                    <h3 class="text-lg font-semibold text-mist-100 mb-2">Task Management App</h3>
+                    <p class="text-mist-300 mb-2">Vue.js, Express, PostgreSQL</p>
+                    <p class="text-mist-200 mb-3">
+                        A collaborative task management application with real-time updates, 
+                        team collaboration features, and project tracking capabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge rounded-full border border-aurora-500/40 bg-aurora-500/10 px-3 py-1 text-sm text-aurora-500">Vue.js</span>
+                        <span class="badge rounded-full border border-aurora-500/40 bg-aurora-500/10 px-3 py-1 text-sm text-aurora-500">Express</span>
+                        <span class="badge rounded-full border border-aurora-500/40 bg-aurora-500/10 px-3 py-1 text-sm text-aurora-500">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="print-avoid-break rounded-2xl border border-night-800/70 bg-night-900/60 p-6 shadow-panel backdrop-blur-sm">
+            <h2 class="text-2xl font-semibold text-mist-100 mb-4 border-b border-night-700/70 pb-2">Skills</h2>
+            
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 print-skills-grid">
+                <div class="skills-column">
+                    <h3 class="text-lg font-semibold text-mist-100 mb-3">Frontend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">HTML5</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">CSS3</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">JavaScript</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">React</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">Vue.js</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">Tailwind CSS</span>
+                    </div>
+                </div>
+                
+                <div class="skills-column">
+                    <h3 class="text-lg font-semibold text-mist-100 mb-3">Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">Node.js</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">Express</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">MongoDB</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">PostgreSQL</span>
+                        <span class="badge rounded-full border border-night-800/70 bg-night-900/60 px-3 py-1 text-sm text-mist-200">Redis</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="print-avoid-break rounded-2xl border border-night-800/70 bg-night-900/60 p-6 shadow-panel backdrop-blur-sm">
+            <h2 class="text-2xl font-semibold text-mist-100 mb-4 border-b border-night-700/70 pb-2">Education</h2>
+            
+            <div class="mb-4">
+                <div class="flex flex-col gap-1 md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-mist-100">Bachelor of Computer Science</h3>
+                    <span class="text-mist-300 text-sm">2016 - 2020</span>
+                </div>
+                <p class="text-mist-300">University of Technology</p>
+                <p class="text-mist-200">GPA: 3.8/4.0</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contactSection" class="print-avoid-break rounded-2xl border border-night-800/70 bg-night-900/60 p-6 shadow-panel backdrop-blur-sm">
+            <h2 class="text-2xl font-semibold text-mist-100 mb-4 border-b border-night-700/70 pb-2">Contact</h2>
+            
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div class="space-y-3">
+                    <p class="text-mist-200"><strong class="text-mist-100">Email:</strong>
+                      <a class="ml-1 text-aurora-500 transition-colors hover:text-aurora-400" href="mailto:hriteekbista@gmail.com" target="_blank">hriteekbista@gmail.com</a>
+                    </p>
+                    <p class="text-mist-200"><strong class="text-mist-100">Phone:</strong>
+                      <a class="ml-1 text-aurora-500 transition-colors hover:text-aurora-400" href="tel:+9779862074699" target="_blank">+977 9862074699</a>
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-mist-200"><strong class="text-mist-100">Location:</strong> Kathmandu, Nepal</p>
+                    <p class="text-mist-200"><strong class="text-mist-100">Website:</strong>
+                      <a class="ml-1 text-aurora-500 transition-colors hover:text-aurora-400" href="https://hriteekbista.com.np" target="_blank">https://hriteekbista.com.np</a>
+                    </p>
+                    <p class="text-mist-200"><strong class="text-mist-100">LinkedIn:</strong>
+                      <a class="ml-1 text-aurora-500 transition-colors hover:text-aurora-400" href="https://www.linkedin.com/in/hriteekbista" target="_blank">linkedin.com/in/hriteekbista</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-night-900/70 border-t border-night-800/60 py-4 no-print backdrop-blur-sm transition-colors duration-300">
+        <div class="max-w-resume mx-auto px-4 text-center text-mist-300">
+            <p>&copy; 2024 Hriteek Bista. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+        const body = document.body;
+
+        const triggerIconAnimation = (icon) => {
+            icon.classList.remove('theme-icon-animate');
+            void icon.offsetWidth;
+            icon.classList.add('theme-icon-animate');
+        };
+
+        // Check for saved theme preference or default to the aurora night mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+            body.classList.remove('light-mode');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            html.classList.remove('dark');
+            body.classList.add('light-mode');
+            moonIcon.classList.remove('hidden');
+            sunIcon.classList.add('hidden');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            const isDark = html.classList.contains('dark');
+            if (isDark) {
+                html.classList.remove('dark');
+                body.classList.add('light-mode');
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+                triggerIconAnimation(moonIcon);
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                body.classList.remove('light-mode');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                triggerIconAnimation(sunIcon);
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Print functionality
+        document.getElementById('printBtn').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+  </body>
+</html>
